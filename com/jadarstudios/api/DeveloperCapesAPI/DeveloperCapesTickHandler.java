@@ -43,7 +43,7 @@ public class DeveloperCapesTickHandler implements ITickHandler {
 					EntityPlayer player = players.get(counter);
 					String oldCloak = player.playerCloakUrl;
 					
-					if(player.playerCloakUrl.startsWith("http://skins.minecraft.net/MinecraftCloaks/")) {
+					if(player.playerCloakUrl.startsWith("http://skins.minecraft.net/MinecraftCloaks/") || player.playerCloakUrl.startsWith("https://dl.dropbox.com/")) {
 					
 						String lowerUsername = player.username.toLowerCase();
 						
