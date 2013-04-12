@@ -28,10 +28,6 @@ public final class DeveloperCapesAPI {
 
     /**
      * Object constructor.
-     * 
-     * @param parTxtUrl
-     * @param parDeveloperCape
-     * @param parTesterCape
      */
     private DeveloperCapesAPI() {
         users = new HashMap<String, DeveloperCapesUser>();
@@ -112,7 +108,7 @@ public final class DeveloperCapesAPI {
     /**
      * Used to get user from users HashMap.
      * 
-     * @param parUsername
+     * @param parUsername 
      * @return
      */
     public DeveloperCapesUser getUser(String parUsername) {
