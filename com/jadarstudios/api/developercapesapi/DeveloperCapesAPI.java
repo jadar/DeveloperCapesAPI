@@ -108,7 +108,7 @@ public final class DeveloperCapesAPI {
     /**
      * Used to get user from users HashMap.
      * 
-     * @param parUsername 
+     * @param parUsername
      * @return
      */
     public DeveloperCapesUser getUser(String parUsername) {

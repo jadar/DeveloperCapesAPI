@@ -50,15 +50,14 @@ public class DeveloperCapesTickHandler implements ITickHandler {
                             String oldCloak = player.cloakUrl;
 
                             // get the user from the hash map and get the cape
-                            // url.
-                            DeveloperCapesUser hashUser = (DeveloperCapesUser) instance
-                                    .getUser(lowerUsername);
+                            // URL.
+                            DeveloperCapesUser hashUser = instance.getUser(lowerUsername);
                             String groupUrl = instance.getGroupUrl(hashUser.getGroup());
 
                             // set cape URL.
                             player.cloakUrl = groupUrl;
 
-                            // if the set cloak does not equal the old cloak
+                            // If the set cloak does not equal the old cloak
                             // then download the cloak.
                             if (player.cloakUrl != oldCloak){
                                 // download the cloak. the second argument is an
