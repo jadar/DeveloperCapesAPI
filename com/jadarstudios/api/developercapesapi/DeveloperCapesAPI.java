@@ -34,6 +34,11 @@ public final class DeveloperCapesAPI {
         groupUrls = new HashMap<String, String>();
     }
 
+    /**
+     * Gets the current {@link DeveloperCapesAPI}'s instance.
+     * 
+     * @return Either a new instance or the instance being used.
+     */
     public static DeveloperCapesAPI getInstance() {
         if (instance == null){
             instance = new DeveloperCapesAPI();
@@ -42,10 +47,12 @@ public final class DeveloperCapesAPI {
     }
 
     /**
-     * Set up capes. All cape URLs are in the TXT file passed in.
+     * Sets up capes. All cape URLs are in the TXT file passed in.
      * https://github.com/jadar/DeveloperCapesAPI/blob/master/SampleCape.txt
      * 
      * @param parTxtUrl
+     *            The URL that contains the .txt file with the User groups and
+     *            their capes URL.
      */
     public void init(String parTxtUrl) {
         try{
@@ -59,11 +66,11 @@ public final class DeveloperCapesAPI {
 
             while ((line = reader.readLine()) != null){
 
-                // excludes commented lines
+                // Excludes commented lines
                 if (!line.startsWith("#")){
-                    // loops through characters.
+                    // Loops through characters.
                     for (int i = 0; i < line.length(); i++){
-                        // when char : is found do stuff.
+                        // When char '=' is found do stuff.
                         if (line.charAt(i) == '='){
                             group = line.substring(0, i);
                             String subLine = line.substring(i + 1);
@@ -84,9 +91,9 @@ public final class DeveloperCapesAPI {
             x.printStackTrace();
         }
 
-        // make sure to set up only one tick handler.
+        // Make sure to set up only one tick handler.
         if (!tickSetUp){
-            // set up tick handler for capes.
+            // Sets up tick handler for capes.
             TickRegistry.registerTickHandler(new DeveloperCapesTickHandler(), Side.CLIENT);
             tickSetUp = true;
         }
@@ -96,7 +103,9 @@ public final class DeveloperCapesAPI {
      * Used to add user to users HashMap.
      * 
      * @param parUsername
+     *            The User name to add to the group.
      * @param parGroup
+     *            the group in witch the User name should be on.
      */
     public void addUser(String parUsername, String parGroup) {
         if (getUser(parUsername) == null){
@@ -109,7 +118,8 @@ public final class DeveloperCapesAPI {
      * Used to get user from users HashMap.
      * 
      * @param parUsername
-     * @return
+     *            The User to find in the HashMap.
+     * @return The User name found in the HashMap.
      */
     public DeveloperCapesUser getUser(String parUsername) {
         return users.get(parUsername.toLowerCase());
@@ -119,7 +129,9 @@ public final class DeveloperCapesAPI {
      * Used to add group and URL to groupUrls HashMap.
      * 
      * @param parGroup
+     *            The group to add to the HashMap.
      * @param parCapeUrl
+     *            The cape URL to add to the HashMap.
      */
     public void addGroupUrl(String parGroup, String parCapeUrl) {
         if (getGroupUrl(parGroup) == null){
@@ -131,7 +143,8 @@ public final class DeveloperCapesAPI {
      * Used to get URL from groupUrl by the group name.
      * 
      * @param group
-     * @return
+     *            The group name to get the cape URL from.
+     * @return The cape URL.
      */
     public String getGroupUrl(String group) {
         return groupUrls.get(group);

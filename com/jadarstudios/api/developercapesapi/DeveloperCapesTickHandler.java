@@ -25,44 +25,52 @@ public class DeveloperCapesTickHandler implements ITickHandler {
 
     @Override
     public void tickStart(EnumSet<TickType> type, Object... tickData) {
-        // will not run if there is no world, and if there are player entities
-        // in the playerEntities list.
+        /*
+         * Will not run if there is no world, and if there are player entities
+         * in the playerEntities list.
+         */
         if ((mc.theWorld != null) && (mc.theWorld.playerEntities.size() > 0)){
 
-            // grabs a list of all the players, and the world.
+            // Grabs a list of all the players, and the world.
             @SuppressWarnings("unchecked")
             List<EntityPlayer> players = mc.theWorld.playerEntities;
 
-            // the loops that goes through each player
+            // The loops that goes through each player
             for (int counter = 0; counter < players.size(); counter++){
 
-                // helps keep from getting an ArrayOutOfBoundException
+                // Helps keep from getting an ArrayOutOfBoundException
                 if (players.get(counter) != null){
 
-                    // get the player from the players list.
+                    // Get the player from the players list.
                     EntityPlayer player = players.get(counter);
 
                     if (player.cloakUrl.startsWith("http://skins.minecraft.net/MinecraftCloaks/")){
-                        // lowercase username, so no problems with case.
+                        // Lowercase username, so no problems with case.
                         String lowerUsername = player.username.toLowerCase();
 
                         if (instance.getUser(lowerUsername) != null){
                             String oldCloak = player.cloakUrl;
 
-                            // get the user from the hash map and get the cape
-                            // URL.
+                            /*
+                             * Get the user from the hash map and get the cape
+                             * URL.
+                             */
                             DeveloperCapesUser hashUser = instance.getUser(lowerUsername);
                             String groupUrl = instance.getGroupUrl(hashUser.getGroup());
 
-                            // set cape URL.
+                            // Sets the cape URL.
                             player.cloakUrl = groupUrl;
 
-                            // If the set cloak does not equal the old cloak
-                            // then download the cloak.
+                            /*
+                             * If the set cloak does not equal the old cloak
+                             * then download the cloak.
+                             */
                             if (player.cloakUrl != oldCloak){
-                                // download the cloak. the second argument is an
-                                // image buffer that makes sure the cape is the
-                                // right dimensions.
+                                /*
+                                 * Downloads the cloak. The second argument is
+                                 * an image buffer that makes sure the cape is
+                                 * the right dimensions.
+                                 */
                                 mc.renderEngine.obtainImageData(player.cloakUrl,
                                         new ImageBufferDownload());
                             }
