@@ -1,6 +1,6 @@
 /**
  * Copyright (c) Jadar, 2013
- * Developer Capes API by Jadar
+ * Developer Capes API by Jadar, HD Patch by Vinny Benson (Shadow Raven Games)
  * License: Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  * version 1.3.1
  */
@@ -81,7 +81,7 @@ public final class DeveloperCapesAPI {
                             if (subLine.startsWith("http")){
                                 capeUrl = subLine;
                                 getInstance().addGroupUrl(group, capeUrl);
-                                mc.renderEngine.obtainImageData(capeUrl, new ImageBufferDownload());
+                                mc.renderEngine.obtainImageData(capeUrl, new DeveloperCapesImageBufferDownload());
                                 // System.out.println(capeUrl);
                                 continue;
                             }else{
@@ -115,7 +115,6 @@ public final class DeveloperCapesAPI {
     public void addUser(String parUsername, String parGroup) {
         if (getUserGroup(parUsername) == null){
             users.put(parUsername, parGroup);
-
         }
     }
 
