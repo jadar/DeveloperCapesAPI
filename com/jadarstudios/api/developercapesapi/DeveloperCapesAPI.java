@@ -1,6 +1,6 @@
 /**
  * Copyright (c) Jadar, 2013
- * Developer Capes API by Jadar
+ * Developer Capes API by Jadar, HD Patch by Vinny Benson (Shadow Raven Games)
  * License: Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  * version 1.3.1
  */
