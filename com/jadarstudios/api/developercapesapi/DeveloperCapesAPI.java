@@ -81,7 +81,7 @@ public final class DeveloperCapesAPI {
                             if (subLine.startsWith("http")){
                                 capeUrl = subLine;
                                 getInstance().addGroupUrl(group, capeUrl);
-                                mc.renderEngine.obtainImageData(capeUrl, new ImageBufferDownload());
+                                mc.renderEngine.obtainImageData(capeUrl, new DeveloperCapesImageBufferDownload());
                                 // System.out.println(capeUrl);
                                 continue;
                             }else{
