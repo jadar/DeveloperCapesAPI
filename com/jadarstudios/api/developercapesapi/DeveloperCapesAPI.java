@@ -115,7 +115,6 @@ public final class DeveloperCapesAPI {
     public void addUser(String parUsername, String parGroup) {
         if (getUserGroup(parUsername) == null){
             users.put(parUsername, parGroup);
-
         }
     }
 
