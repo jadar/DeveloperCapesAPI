@@ -4,7 +4,7 @@
  * License: Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  * version 1.3.1
  */
-package uk.co.minebook.mod.lib;
+package com.jadarstudios.api.developercapesapi;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
