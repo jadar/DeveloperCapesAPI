@@ -13,13 +13,13 @@ import net.minecraft.util.ResourceLocation;
 
 public class DevCapes
 {
-
+	
 	/**
 	 * Adds a cape for just a single player
 	 * @param username: The username of the player. 
 	 * @param url: The url of the cape image.
 	 */
-	public static void addPersonalCape(String username, String url)
+	public static void addCape(String username, String url)
 	{
 		
 		ThreadDownloadImageData object = new ThreadDownloadImageData(url, null, null);
@@ -37,8 +37,7 @@ public class DevCapes
 		for (String username : group) 
 		{
 			
-			ThreadDownloadImageData object = new ThreadDownloadImageData(url, null, null);
-			Minecraft.getMinecraft().renderEngine.loadTexture(new ResourceLocation("cloaks/" + username), (TextureObject) object);
+			addCape(username, url);
 		}
 	}
 	
