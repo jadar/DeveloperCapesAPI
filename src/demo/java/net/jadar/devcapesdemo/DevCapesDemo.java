@@ -1,11 +1,11 @@
 package net.jadar.devcapesdemo;
 
-import com.jadarstudios.developercapes.DevCapes;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.relauncher.Side;
+import com.jadarstudios.developercapes.DevCapes;
 
 @Mod(modid = "devcapesdemo", name = "Developer Capes Demo", version = "1.0")
 public class DevCapesDemo {
