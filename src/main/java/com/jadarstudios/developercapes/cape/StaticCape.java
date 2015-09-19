@@ -6,13 +6,17 @@
  */
 package com.jadarstudios.developercapes.cape;
 
+import com.jadarstudios.developercapes.DevCapes;
 import com.jadarstudios.developercapes.HDImageBuffer;
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
+import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
 import net.minecraft.util.ResourceLocation;
 
+import java.lang.reflect.Field;
 import java.net.URL;
 
 /**
@@ -34,7 +38,23 @@ public class StaticCape extends AbstractCape {
     @Override
     public void loadTexture(AbstractClientPlayer player) {
         ResourceLocation location = this.getLocation();
-        player.func_152121_a(MinecraftProfileTexture.Type.CAPE, location);
+
+        //mmdanggg2: using reflection to modify the private locationCape, hacky but it works.
+        try {
+            Field playerInfoF = AbstractClientPlayer.class.getDeclaredField("playerInfo");
+            playerInfoF.setAccessible(true);
+            NetworkPlayerInfo nci = (NetworkPlayerInfo) playerInfoF.get(player);
+
+            Field locationCapeF = NetworkPlayerInfo.class.getDeclaredField("locationCape");
+            locationCapeF.setAccessible(true);
+            locationCapeF.set(nci, location);
+
+            playerInfoF.setAccessible(false);
+            locationCapeF.setAccessible(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+            DevCapes.getInstance().logger.error("Setting cape ResourceLocation failed!");
+        }
 
         Minecraft.getMinecraft().renderEngine.loadTexture(location, this.getTexture());
     }
